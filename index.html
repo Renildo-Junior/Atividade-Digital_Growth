@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primos Code · Parou? Alguém assume o problema.</title>
+<meta name="description" content="Resolvemos o que parou na sua empresa e seguimos com você depois da entrega. Sem “isso não é comigo”.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141B2D'/%3E%3Ctext x='32' y='42' font-size='28' font-family='monospace' font-weight='700' text-anchor='middle' fill='%23F5A623'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#141B2D;--card:#1F2937;--amber:#F5A623;--amberd:#B45309;--ink:#1B2333;--mut:#4B5563;--soft:#F8FAFC;--line:#E5E7EB}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.55;background:#fff}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#111;font-weight:800;text-decoration:none;border:0;border-radius:999px;padding:15px 28px;font-size:17px;cursor:pointer;box-shadow:0 8px 24px rgba(245,166,35,.28)}
+.btn.sm{padding:9px 18px;font-size:14px;box-shadow:none}
+.btn svg{width:20px;height:20px;flex:none}
+.top{background:var(--bg);padding:16px 0}
+.top .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo{color:#fff;font-weight:800;font-size:14px;letter-spacing:.03em}.logo i{color:var(--amber);font-style:normal;margin-right:6px}
+.hero{background:linear-gradient(180deg,var(--bg),#1B2338);color:#fff;padding:56px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.kick{color:var(--amber);font-weight:700;font-size:14px;margin-bottom:14px}
+h1{font-size:clamp(36px,6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-.02em}
+h1 span{color:var(--amber)}
+.sub{font-size:19px;color:#E5E7EB;margin:20px 0 28px;max-width:440px}
+.micro{font-size:14px;color:#CBD5E1;margin-top:14px}
+.mon{background:#2A3548;border:1px solid #3B4A63;border-radius:20px;padding:36px 28px 22px;text-align:center}
+.mon svg{width:100%;max-width:300px;height:auto}
+.mon p{font-size:13px;color:#E5E7EB;margin-top:14px}
+section{padding:64px 0}.alt{background:var(--soft)}
+h2{font-size:clamp(26px,4vw,34px);line-height:1.15;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.lead{color:var(--mut);font-size:17px;max-width:560px;margin-bottom:28px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.c{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+.c .n{font-size:26px;font-weight:900;color:var(--amberd);line-height:1;margin-bottom:10px}
+.c h3{font-size:16px;margin-bottom:6px}.c p{font-size:15.5px;color:var(--mut)}
+.c q{font-weight:700;color:var(--ink);quotes:"“" "”"}
+.band{margin-top:16px;background:var(--card);color:#fff;border-radius:14px;padding:20px 24px;display:flex;gap:16px;flex-wrap:wrap;align-items:baseline}
+.band b{color:var(--amber);font-size:19px}
+.step .b{width:34px;height:34px;border-radius:50%;background:var(--bg);color:var(--amber);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.tag{display:inline-block;margin-top:12px;background:#FEF3C7;color:#7C2D12;font-size:12.5px;font-weight:700;border-radius:999px;padding:4px 10px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vs div{border-radius:14px;padding:24px;border:1px solid var(--line);background:#fff}
+.vs .dk{background:var(--card);color:#fff;border-color:var(--card)}
+.vs h3{font-size:15px;margin-bottom:12px}
+.vs ul{padding-left:20px}.vs li{margin:6px 0;font-size:15.5px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}
+.faq summary{font-weight:700;cursor:pointer;font-size:16px}
+.faq p{color:var(--mut);margin-top:8px;font-size:15.5px}
+.final{background:var(--bg);color:#fff;text-align:center;padding:64px 0}
+.final h2{font-size:clamp(28px,5vw,36px)}
+.final p{color:#E5E7EB;max-width:460px;margin:10px auto 26px}
+#form{max-width:460px;margin:0 auto 22px;text-align:left;display:none}
+#form.on{display:block}
+#form label{display:block;font-size:14px;font-weight:700;margin:12px 0 6px;color:#E5E7EB}
+#form input,#form textarea{width:100%;border-radius:10px;border:1px solid #3B4A63;background:#0F1626;color:#fff;padding:12px;font:inherit}
+#form .btn{margin-top:16px;width:100%;justify-content:center}
+#ok{display:none;max-width:460px;margin:0 auto 22px;background:#0F1626;border:1px solid var(--amber);border-radius:12px;padding:16px;color:#fff}
+#ok.on{display:block}
+footer{background:#0F1626;color:#CBD5E1;text-align:center;font-size:13px;padding:22px 0}
+@media(max-width:820px){.hero .wrap,.g3,.vs{grid-template-columns:1fr}.mon{order:-1;display:none}}
+</style>
+</head>
+<body>
+<!-- Troque o número abaixo (DDI+DDD+número, só dígitos) pelo WhatsApp real da Primos Code -->
+<script>window.PRIMOS_WA="5547999999999";</script>
+<div class="top"><div class="wrap"><div class="logo"><i>&lt;/&gt;</i>PRIMOS CODE</div><a class="btn sm cta" href="#contato">Chamar no WhatsApp</a></div></div>
+
+<main>
+<header class="hero"><div class="wrap">
+ <div>
+  <p class="kick">Segunda-feira, 8h. A rede não responde.</p>
+  <h1>Parou? <span>Alguém assume o problema.</span></h1>
+  <p class="sub">Resolvemos o que parou na sua empresa e seguimos com você depois da entrega. Sem “isso não é comigo”.</p>
+  <a class="btn cta" href="#contato"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" aria-hidden="true"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.4z"/></svg>Chamar no WhatsApp</a>
+  <p class="micro">1 conversa, 1 responsável pelo problema inteiro. Mande texto, foto ou áudio.</p>
+ </div>
+ <div class="mon">
+  <svg viewBox="0 0 300 190" role="img" aria-label="Monitor sem conexão"><rect x="30" y="8" width="240" height="140" rx="10" fill="#141B2D" stroke="#3B4A63" stroke-width="3"/><g fill="none" stroke="#F5A623" stroke-width="9"><path d="M105 72A62 62 0 0 1 195 72"/><path d="M122 92A38 38 0 0 1 178 92"/><path d="M137 108A17 17 0 0 1 163 108"/></g><circle cx="150" cy="118" r="7" fill="#F5A623"/><line x1="110" y1="40" x2="192" y2="128" stroke="#EF4444" stroke-width="9"/><rect x="108" y="162" width="84" height="10" rx="5" fill="#3B4A63"/></svg>
+  <p>Sem conexão. E o técnico não atende mais.</p>
+ </div>
+</div></header>
+
+<section class="alt"><div class="wrap">
+ <h2>Ninguém assume o problema inteiro</h2>
+ <p class="lead">Você paga a TI da empresa, mas quando algo para, cada fornecedor aponta para o outro. Enquanto isso, a equipe fica parada esperando.</p>
+ <div class="g3">
+  <div class="c"><div class="n">1</div><h3>O provedor</h3><p><q>Do nosso lado está tudo certo. Deve ser o computador.</q></p></div>
+  <div class="c"><div class="n">2</div><h3>O técnico</h3><p><q>O computador está ok. Isso é da rede, não é comigo.</q></p></div>
+  <div class="c"><div class="n">3</div><h3>O sistema</h3><p><q>O programa funciona. Fala com quem cuida do servidor.</q></p></div>
+ </div>
+ <div class="band"><b>3 fornecedores, 0 responsáveis.</b><span>E quem decide e paga a conta fica no meio, sem resposta.</span></div>
+</div></section>
+
+<section><div class="wrap">
+ <h2>Como funciona: 3 etapas, 1 responsável</h2>
+ <p class="lead">Do primeiro “parou” até depois da entrega, você fala com a mesma pessoa, no mesmo WhatsApp.</p>
+ <div class="g3">
+  <div class="c step"><div class="b">1</div><h3>Você conta o que parou</h3><p>Uma mensagem basta. Texto, foto da tela ou áudio, do seu jeito, sem termo técnico.</p><span class="tag">1 mensagem para começar</span></div>
+  <div class="c step"><div class="b">2</div><h3>A gente assume e resolve</h3><p>Diagnóstico e correção do problema inteiro, mesmo que envolva provedor, equipamento ou sistema de outro fornecedor.</p><span class="tag">1 responsável do início ao fim</span></div>
+  <div class="c step"><div class="b">3</div><h3>Seguimos com você depois</h3><p>A entrega não encerra a conversa. Voltamos para conferir se continua funcionando e respondemos no mesmo canal.</p><span class="tag">Fim do “isso não é comigo”</span></div>
+ </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+ <h2>Não te deixamos na mão</h2>
+ <p class="lead">O seu medo é pagar e, no dia seguinte, ninguém atender. Por isso a diferença está no que acontece depois.</p>
+ <div class="vs">
+  <div><h3>Como costuma ser</h3><ul><li>Cada parte com um fornecedor diferente</li><li>Resolveu hoje, sumiu amanhã</li><li>O combinado ficou “de boca”</li></ul></div>
+  <div class="dk"><h3>Com a Primos Code</h3><ul><li>1 responsável pelo problema inteiro</li><li>A conversa continua depois da entrega</li><li>Orçamento e o que foi feito, por escrito, antes e depois</li></ul></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <h2>O que você tem por escrito</h2>
+ <p class="lead">Sem promessa vaga: são 3 compromissos que ficam registrados no próprio WhatsApp e você pode cobrar.</p>
+ <div class="g3">
+  <div class="c"><div class="n">1º</div><h3>Orçamento antes</h3><p>Você aprova o valor antes de qualquer serviço começar. Nada de conta surpresa.</p></div>
+  <div class="c"><div class="n">2º</div><h3>Relato depois</h3><p>Ao terminar, você recebe o que foi feito, em linguagem simples, para guardar.</p></div>
+  <div class="c"><div class="n">3º</div><h3>Mesmo canal sempre</h3><p>Se voltar a dar problema, é a mesma conversa e a mesma equipe. Sem recomeçar do zero.</p></div>
+ </div>
+</div></section>
+
+<section class="alt"><div class="wrap faq">
+ <h2>Perguntas frequentes</h2>
+ <p class="lead">As 4 dúvidas que mais ouvimos de quem cuida da TI sem ser de TI.</p>
+ <details><summary>Preciso entender de TI para pedir ajuda?</summary><p>Não. Conte o que parou do seu jeito, com uma foto ou um áudio. A tradução técnica é com a gente.</p></details>
+ <details><summary>E se o problema voltar?</summary><p>Você chama no mesmo WhatsApp e fala com a mesma equipe, que já conhece o histórico. Seguir com você depois da entrega é o nosso trabalho.</p></details>
+ <details><summary>Vocês trabalham com fornecedores diferentes?</summary><p>Sim. Se o problema envolver provedor, equipamento ou sistema de terceiros, a gente conversa com eles por você.</p></details>
+ <details><summary>Quanto custa?</summary><p>Depende do que parou. Você recebe o orçamento por escrito e só aprova se fizer sentido.</p></details>
+</div></section>
+
+<div class="final" id="contato"><div class="wrap">
+ <h2>Parou? Alguém assume o problema.</h2>
+ <p>O que está parado agora custa tempo da sua equipe. Conte o que aconteceu em 1 mensagem.</p>
+ <form id="form" autocomplete="off">
+  <label for="nome">Seu nome</label><input id="nome" name="nome" required maxlength="60">
+  <label for="msg">O que parou?</label><textarea id="msg" name="msg" rows="3" required maxlength="300" placeholder="Ex.: a rede caiu e a impressora não se comunica com o computador"></textarea>
+  <button class="btn" type="submit">Chamar no WhatsApp</button>
+ </form>
+ <div id="ok" role="status">Pronto! Abrimos o WhatsApp com a sua mensagem. Se não abriu, toque em <a id="okl" href="#" style="color:#F5A623">Chamar no WhatsApp</a>.</div>
+ <a class="btn" id="open" href="#contato">Chamar no WhatsApp</a>
+</div></div>
+</main>
+<footer>&lt;/&gt; Primos Code · Serviços de TI, do suporte ao desenvolvimento de soluções.</footer>
+
+<script>
+(function(){
+ var f=document.getElementById('form'),o=document.getElementById('open'),ok=document.getElementById('ok'),l=document.getElementById('okl');
+ function show(e){if(e)e.preventDefault();f.classList.add('on');o.style.display='none';document.getElementById('contato').scrollIntoView({behavior:'smooth'});document.getElementById('nome').focus({preventScroll:true})}
+ o.addEventListener('click',show);
+ [].forEach.call(document.querySelectorAll('.cta'),function(a){a.addEventListener('click',show)});
+ f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var t='Olá, sou '+f.nome.value.trim()+'. O que parou: '+f.msg.value.trim();
+  var u='https://wa.me/'+window.PRIMOS_WA+'?text='+encodeURIComponent(t);
+  l.href=u;ok.classList.add('on');window.open(u,'_blank','noopener');
+ });
+})();
+</script>
+</body></html>
